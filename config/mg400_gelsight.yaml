@@ -1,0 +1,16 @@
+# Validated physical demonstration setup.
+# The production collector currently keeps these calibrated values in-script.
+robot: Dobot MG400
+sensor: GelSight
+work_frame_mm_deg: [265.36090088, 40.82979202, -114.89134216, 0, 0, 0]
+tcp_mm_deg: [0, 0, -50, 0, 0, 0]
+rz_deg: -31.3
+camera_source: 2
+safe_z_mm: 1.0
+depths_mm: [0.5]
+shear_radius_mm: 1.0
+angle_n: 8
+normal_samples: 11
+shear_samples: 11
+sample_settle_time_s: 0.10
+safe_settle_time_s: 0.5
