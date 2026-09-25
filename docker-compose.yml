@@ -1,0 +1,13 @@
+services:
+  workshop:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    environment:
+      - PYTHONPATH=/workspace/src
+    volumes:
+      - .:/workspace
+      - ./tactile_data:/workspace/tactile_data
