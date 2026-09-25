@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.DS_Store
+.pytest_cache/
+build/
+install/
+log/
+outputs/
+tactile_data/
+*.bag
+*.db3
+*.mcap
