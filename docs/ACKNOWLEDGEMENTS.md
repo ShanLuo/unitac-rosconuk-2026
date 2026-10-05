@@ -1,6 +1,6 @@
 # Acknowledgements and provenance
 
-This private workshop repository is undergoing collaborator review before public release. Inclusion here does not imply that authors of the cited work contributed directly to this repository.
+UniTac @ ROSCon UK 2026 builds on research and engineering from the tactile-robotics community.
 
 The tactile sensing, simulation and cross-sensor learning design is informed by prior work including:
 
@@ -9,12 +9,22 @@ The tactile sensing, simulation and cross-sensor learning design is informed by 
 3. Chen, Z., Ou, N., Zhang, X., Wu, Z., Zhao, Y., Wang, Y., Papastavridis, E.S., Lepora, N., Jamone, L., Deng, J. and Luo, S. (2026). *Training tactile sensors to learn force sensing from each other*. Nature Communications.
 4. Gomes, D.F., Paoletti, P. and Luo, S. (2021). *Generation of GelSight tactile images for sim2real learning*. IEEE Robotics and Automation Letters, 6(2), 4177–4184.
 
-## Code provenance review
+## GenForce
 
-Before public release:
-- identify the origin and licence of each tactile-bench-derived file;
-- preserve required upstream copyright/licence notices;
-- obtain collaborator approval for code that is not solely workshop-authored;
-- remove internal backups, generated outputs and credentials/configuration not intended for release.
+The GenForce-style trajectory used in the workshop is based on the public GenForce resources:
 
-No repository-wide open-source licence should be inferred until this review is complete.
+https://github.com/Zhuochenn/GenForce_Code
+
+Third-party files should retain their original notices and are not automatically covered by UniTac's MIT licence.
+
+## tactile-bench and MG400 rig
+
+The MG400 rig assets were made publicly accessible by Nathan Lepora through:
+
+https://github.com/robot-dexterity/tactile-bench
+
+At the time of this workshop update, the upstream tactile-bench LICENSE states proprietary/confidential restrictions on copying and distribution. UniTac therefore links to those assets rather than redistributing them. This repository's MIT licence does not supersede the upstream terms.
+
+## UniTac licence scope
+
+Workshop-authored UniTac code and documentation are released under the MIT License. Any third-party code, CAD, models, data or derived components remain governed by their applicable upstream licence or explicit permission.
