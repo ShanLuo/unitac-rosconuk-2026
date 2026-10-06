@@ -3,9 +3,9 @@
 <package format="3">
   <name>unitac_gelsight</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="root@todo.todo">root</maintainer>
-  <license>TODO: License declaration</license>
+  <description>ROS 2 camera interface for GelSight tactile sensors in the UniTac tactile data-collection system.</description>
+  <maintainer email="shan.luo@kcl.ac.uk">Prof. Shan Luo</maintainer>
+  <license>MIT</license>
 
   <depend>rclpy</depend>
   <depend>sensor_msgs</depend>
