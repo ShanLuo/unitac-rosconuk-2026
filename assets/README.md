@@ -42,13 +42,13 @@ assets/
 └── indenters/
 ```
 
-## Workshop mounts
+## MG400 workshop assets and mounts
 
-The following workshop-specific mounting CAD files are provided directly for this repository and should be stored under:
+The following workshop-specific mounting CAD files are included directly in this repository under `assets/mg400/`:
 
 ```text
 assets/
-└── mount/
+└── mg400/
 ```
 
 - `backpanel gelsight.stl` — back panel for attaching the customised GelSight sensor to the MG400 tooling.
