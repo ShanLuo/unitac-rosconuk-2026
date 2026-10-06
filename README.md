@@ -36,6 +36,8 @@ The validated workshop experiment contains 40 cycles, 1,760 trajectory samples a
 
 ## Quick start
 
+The workshop image uses ROS 2 Humble on Ubuntu 22.04 and builds the UniTac ROS 2 packages with `colcon`. The MG400 backend is provided by the external [Common Robot Interface (CRI)](https://github.com/robot-dexterity/common-robot-interface), pinned in the Docker image for reproducibility.
+
 ```bash
 git clone https://github.com/ShanLuo/unitac-rosconuk-2026.git
 cd unitac-rosconuk-2026
@@ -43,13 +45,21 @@ docker compose build
 docker compose run --rm workshop
 ```
 
-Build the ROS 2 workspace inside the workshop container:
+The image already contains a built ROS 2 workspace and sources both ROS 2 Humble and the UniTac overlay for interactive shells. If you edit files under `src/`, rebuild the overlay inside the container with:
 
 ```bash
-source /opt/ros/humble/setup.bash
+cd /ros2_ws
 colcon build --symlink-install
 source install/setup.bash
 ```
+
+By default, Docker Compose maps host `/dev/video2` to the GelSight device expected by the validated configuration. If the tactile camera has a different host device, set it explicitly, for example:
+
+```bash
+GELSIGHT_DEVICE=/dev/video3 docker compose run --rm workshop
+```
+
+The container uses host networking so it can communicate with the MG400 over Ethernet. Verify the robot IP and camera device before hardware bringup.
 
 ## MG400 + GelSight workshop workflow
 
@@ -102,4 +112,4 @@ This work was supported by the Advanced Research + Invention Agency (ARIA) throu
 
 UniTac workshop-authored code and documentation are released under the MIT License; see `LICENSE`.
 
-Third-party code, models, CAD files and other assets remain subject to their respective upstream licences or permissions. See `docs/ACKNOWLEDGEMENTS.md` and `assets/README.md`.
+Third-party code, models, CAD files and other assets remain subject to their respective upstream licences or permissions. The Common Robot Interface is an external GPLv3 dependency and is not vendored or relicensed as MIT by this repository. See `docs/ACKNOWLEDGEMENTS.md` and `assets/README.md`.

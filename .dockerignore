@@ -1,0 +1,14 @@
+.git
+.github
+__pycache__
+*.py[cod]
+.pytest_cache
+build
+install
+log
+outputs
+test_output
+tactile_data
+*.bag
+*.db3
+*.mcap
