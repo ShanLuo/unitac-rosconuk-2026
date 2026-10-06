@@ -28,10 +28,10 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='zhuo',
-    maintainer_email='zhuo@todo.todo',
+    maintainer='Prof. Shan Luo',
+    maintainer_email='shan.luo@kcl.ac.uk',
     description='Bringup and configuration for UniTac.',
-    license='TODO: License declaration',
+    license='MIT',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [],
