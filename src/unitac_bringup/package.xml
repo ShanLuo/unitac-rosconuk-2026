@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd"
+           schematypens="http://www.w3.org/2001/XMLSchema"?>
+
+<package format="3">
+
+  <name>unitac_bringup</name>
+  <version>0.0.0</version>
+
+  <description>
+    Launch and configuration package for the UniTac tactile
+    data-collection system.
+  </description>
+
+  <maintainer email="zhuo@todo.todo">zhuo</maintainer>
+
+  <license>TODO: License declaration</license>
+
+  <!-- ROS 2 launch infrastructure -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+
+  <!-- UniTac runtime packages -->
+  <exec_depend>unitac_mg400</exec_depend>
+  <exec_depend>unitac_gelsight</exec_depend>
+  <exec_depend>unitac_collection</exec_depend>
+
+  <!-- Tests -->
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+
+</package>

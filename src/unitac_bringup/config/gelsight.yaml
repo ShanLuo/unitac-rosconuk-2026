@@ -1,0 +1,6 @@
+/gelsight_node:
+  ros__parameters:
+    camera_device: 2
+    frame_id: "gelsight_camera"
+    fps: 30.0
+    image_topic: "/unitac/gelsight/image_raw"
