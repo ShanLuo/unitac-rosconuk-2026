@@ -4,7 +4,12 @@
 
 Workshop repository for ROSCon UK 2026. UniTac provides a ROS 2 Humble workflow for tactile sensing and robot data collection. The workshop implementation includes a validated Dobot MG400 + GelSight pipeline, configurable experiment trajectories, and reusable tactile-learning examples.
 
-**Main developer:** Prof. Shan Luo — shan.luo@kcl.ac.uk
+## Developers and contributors
+
+- **Prof. Shan Luo** (shan.luo@kcl.ac.uk) — main developer and project lead.
+- **Prof. Nathan Lepora** (n.lepora@bristol.ac.uk) — contributor through `tactile-bench`, including the MG400 robot interface and TacTip sensor support.
+- **Dr Jack Rome**, TouchLab — contributor.
+- **Dr Vladimir Ivan**, TouchLab — contributor.
 
 ## ROS 2 packages
 
@@ -87,7 +92,7 @@ The workshop calibration and trajectory are configured in the YAML files under `
 
 ## Hardware assets
 
-See `assets/README.md`. The repository now documents the 18-indenter GenForce STL set (originating from the earlier 21-shape GelSight sim2real work), the four UniTac workshop mounting parts, and Nathan Lepora's public `tactile-bench` MG400 rig resources. Third-party CAD files are not automatically relicensed by this repository's MIT licence; their upstream terms must be respected.
+See `assets/README.md`. The repository now documents the 18-indenter GenForce STL set (originating from the earlier 21-shape GelSight sim2real work), the four UniTac workshop mounting parts stored under `assets/mg400/`, and Nathan Lepora's public `tactile-bench` MG400 rig resources. Third-party CAD files are not automatically relicensed by this repository's MIT licence; their upstream terms must be respected.
 
 ## Licence
 
