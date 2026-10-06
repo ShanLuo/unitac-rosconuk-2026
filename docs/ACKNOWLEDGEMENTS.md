@@ -44,6 +44,10 @@ At the time of this workshop update, the upstream tactile-bench LICENSE states p
 
 This work was supported by the Advanced Research + Invention Agency (ARIA) through the **“UniTac: Unifying Tactile Sensing through a Shared Latent Representation”** project, as part of the **Robot Dexterity programme**.
 
+## Common Robot Interface dependency
+
+UniTac uses the **Common Robot Interface (CRI)** for communication with the Dobot MG400. CRI is maintained separately at https://github.com/robot-dexterity/common-robot-interface and is distributed under the **GNU General Public License v3.0 (GPLv3)**. The UniTac Docker image installs CRI as an external dependency and pins an upstream revision for workshop reproducibility. CRI source is not vendored into this repository and is not relicensed under UniTac's MIT licence.
+
 ## UniTac licence scope
 
 Workshop-authored UniTac code and documentation are released under the MIT License. Any third-party code, CAD, models, data or derived components remain governed by their applicable upstream licence or explicit permission.
