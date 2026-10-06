@@ -2,6 +2,13 @@
 
 UniTac @ ROSCon UK 2026 builds on research and engineering from the tactile-robotics community.
 
+## Developers and contributors
+
+- **Prof. Shan Luo** (shan.luo@kcl.ac.uk) — main developer and project lead.
+- **Prof. Nathan Lepora** (n.lepora@bristol.ac.uk) — contributed through `tactile-bench`, which provides the MG400 robot interface used by the workshop and support for the TacTip tactile sensor.
+- **Dr Jack Rome**, TouchLab — contributor.
+- **Dr Vladimir Ivan**, TouchLab — contributor.
+
 The tactile sensing, simulation and cross-sensor learning design is informed by prior work including:
 
 1. Lin, Y., Lloyd, J., Church, A. and Lepora, N.F. (2022). *Tactile Gym 2.0: Sim-to-real deep reinforcement learning for comparing low-cost high-resolution robot touch*. IEEE Robotics and Automation Letters, 7(4), 10754–10761.
@@ -24,6 +31,8 @@ These geometries trace back to the earlier tactile-simulation work of Gomes, Pao
 Third-party or previously published files should retain their original notices and are not automatically covered by UniTac's MIT licence.
 
 ## tactile-bench and MG400 rig
+
+The workshop repository also contains four mounting parts under `assets/mg400/` for the customised GelSight/MG400/breadboard setup.
 
 The MG400 rig assets were made publicly accessible by Nathan Lepora through:
 
