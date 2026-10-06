@@ -13,10 +13,10 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='root',
-    maintainer_email='root@todo.todo',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    maintainer='Prof. Shan Luo',
+    maintainer_email='shan.luo@kcl.ac.uk',
+    description='ROS 2 interface and control nodes for the Dobot MG400 in UniTac.',
+    license='MIT',
     extras_require={
         'test': [
             'pytest',
