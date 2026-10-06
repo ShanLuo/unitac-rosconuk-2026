@@ -11,7 +11,7 @@
     Custom ROS 2 interfaces for the UniTac tactile robotics platform.
   </description>
 
-  <maintainer email="TODO@example.com">TODO</maintainer>
+  <maintainer email="shan.luo@kcl.ac.uk">Prof. Shan Luo</maintainer>
 
   <license>MIT</license>
 
