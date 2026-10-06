@@ -40,6 +40,10 @@ https://github.com/robot-dexterity/tactile-bench
 
 At the time of this workshop update, the upstream tactile-bench LICENSE states proprietary/confidential restrictions on copying and distribution. UniTac therefore links to those assets rather than redistributing them. This repository's MIT licence does not supersede the upstream terms.
 
+## Funding acknowledgement
+
+This work was supported by the Advanced Research + Invention Agency (ARIA) through the **“UniTac: Unifying Tactile Sensing through a Shared Latent Representation”** project, as part of the **Robot Dexterity programme**.
+
 ## UniTac licence scope
 
 Workshop-authored UniTac code and documentation are released under the MIT License. Any third-party code, CAD, models, data or derived components remain governed by their applicable upstream licence or explicit permission.
