@@ -94,6 +94,10 @@ The workshop calibration and trajectory are configured in the YAML files under `
 
 See `assets/README.md`. The repository now documents the 18-indenter GenForce STL set (originating from the earlier 21-shape GelSight sim2real work), the four UniTac workshop mounting parts stored under `assets/mg400/`, and Nathan Lepora's public `tactile-bench` MG400 rig resources. Third-party CAD files are not automatically relicensed by this repository's MIT licence; their upstream terms must be respected.
 
+## Funding
+
+This work was supported by the Advanced Research + Invention Agency (ARIA) through the **“UniTac: Unifying Tactile Sensing through a Shared Latent Representation”** project, as part of the **Robot Dexterity programme**.
+
 ## Licence
 
 UniTac workshop-authored code and documentation are released under the MIT License; see `LICENSE`.
