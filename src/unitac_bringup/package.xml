@@ -12,9 +12,9 @@
     data-collection system.
   </description>
 
-  <maintainer email="zhuo@todo.todo">zhuo</maintainer>
+  <maintainer email="shan.luo@kcl.ac.uk">Prof. Shan Luo</maintainer>
 
-  <license>TODO: License declaration</license>
+  <license>MIT</license>
 
   <!-- ROS 2 launch infrastructure -->
   <exec_depend>launch</exec_depend>
