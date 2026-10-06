@@ -1,0 +1,45 @@
+/unitac_genforce_collector:
+  ros__parameters:
+
+    # Physical execution is always disabled by default.
+    execute_motion: false
+
+    # Output directory.
+    output_dir: "/ros2_ws/test_output/genforce_ros"
+
+    # Tool orientation used for this experiment (degrees).
+    rz: -34.03894
+
+    # Safe retracted position relative to the contact origin (mm).
+    safe_z: 1.0
+
+    # Normal indentation depths (mm).
+    depths:
+      - 0.5
+
+    # Shear trajectory.
+    shear_radius: 1.0
+    angle_n: 8
+
+    # Number of quasi-static samples per trajectory phase.
+    normal_samples: 11
+    shear_samples: 11
+
+    # Settling times (seconds).
+    sample_settle_time: 0.10
+    safe_settle_time: 0.50
+
+    # Five sampling locations in the calibrated work frame.
+    # Stored as flattened [x0,y0,x1,y1,...] because ROS 2 parameters
+    # do not directly support nested arrays.
+    base_points:
+      - 0.0
+      - 0.0
+      - -3.0
+      - 4.0
+      - -3.0
+      - -4.0
+      - 3.0
+      - -4.0
+      - 3.0
+      - 4.0

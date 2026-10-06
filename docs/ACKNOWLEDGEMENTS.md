@@ -1,6 +1,13 @@
 # Acknowledgements and provenance
 
-This private workshop repository is undergoing collaborator review before public release. Inclusion here does not imply that authors of the cited work contributed directly to this repository.
+UniTac @ ROSCon UK 2026 builds on research and engineering from the tactile-robotics community.
+
+## Developers and contributors
+
+- **Prof. Shan Luo** (shan.luo@kcl.ac.uk) — main developer and project lead.
+- **Prof. Nathan Lepora** (n.lepora@bristol.ac.uk) — contributed through `tactile-bench`, which provides the MG400 robot interface used by the workshop and support for the TacTip tactile sensor.
+- **Dr Jack Rome**, TouchLab — contributor.
+- **Dr Vladimir Ivan**, TouchLab — contributor.
 
 The tactile sensing, simulation and cross-sensor learning design is informed by prior work including:
 
@@ -9,12 +16,38 @@ The tactile sensing, simulation and cross-sensor learning design is informed by 
 3. Chen, Z., Ou, N., Zhang, X., Wu, Z., Zhao, Y., Wang, Y., Papastavridis, E.S., Lepora, N., Jamone, L., Deng, J. and Luo, S. (2026). *Training tactile sensors to learn force sensing from each other*. Nature Communications.
 4. Gomes, D.F., Paoletti, P. and Luo, S. (2021). *Generation of GelSight tactile images for sim2real learning*. IEEE Robotics and Automation Letters, 6(2), 4177–4184.
 
-## Code provenance review
+## GenForce and indenter CAD
 
-Before public release:
-- identify the origin and licence of each tactile-bench-derived file;
-- preserve required upstream copyright/licence notices;
-- obtain collaborator approval for code that is not solely workshop-authored;
-- remove internal backups, generated outputs and credentials/configuration not intended for release.
+The GenForce-style trajectory used in the workshop is based on the public GenForce resources:
 
-No repository-wide open-source licence should be inferred until this review is complete.
+https://github.com/Zhuochenn/GenForce_Code
+
+The 18 STL indenter models used by GenForce are published at:
+
+https://github.com/Zhuochenn/GenForce_Code/tree/main/sim/assets/indenters/input/stl
+
+These geometries trace back to the earlier tactile-simulation work of Gomes, Paoletti and Luo (2021), which used 21 indenter shapes. GenForce retained a subset of 18.
+
+Third-party or previously published files should retain their original notices and are not automatically covered by UniTac's MIT licence.
+
+## tactile-bench and MG400 rig
+
+The workshop repository also contains four mounting parts under `assets/mg400/` for the customised GelSight/MG400/breadboard setup.
+
+The MG400 rig assets were made publicly accessible by Nathan Lepora through:
+
+https://github.com/robot-dexterity/tactile-bench
+
+At the time of this workshop update, the upstream tactile-bench LICENSE states proprietary/confidential restrictions on copying and distribution. UniTac therefore links to those assets rather than redistributing them. This repository's MIT licence does not supersede the upstream terms.
+
+## Funding acknowledgement
+
+This work was supported by the Advanced Research + Invention Agency (ARIA) through the **“UniTac: Unifying Tactile Sensing through a Shared Latent Representation”** project, as part of the **Robot Dexterity programme**.
+
+## Common Robot Interface dependency
+
+UniTac uses the **Common Robot Interface (CRI)** for communication with the Dobot MG400. CRI is maintained separately at https://github.com/robot-dexterity/common-robot-interface and is distributed under the **GNU General Public License v3.0 (GPLv3)**. The UniTac Docker image installs CRI as an external dependency and pins an upstream revision for workshop reproducibility. CRI source is not vendored into this repository and is not relicensed under UniTac's MIT licence.
+
+## UniTac licence scope
+
+Workshop-authored UniTac code and documentation are released under the MIT License. Any third-party code, CAD, models, data or derived components remain governed by their applicable upstream licence or explicit permission.

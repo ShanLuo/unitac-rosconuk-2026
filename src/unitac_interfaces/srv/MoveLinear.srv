@@ -1,0 +1,5 @@
+float64[6] target_pose
+---
+bool success
+float64[6] actual_pose
+string message
