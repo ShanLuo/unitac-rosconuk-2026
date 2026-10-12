@@ -17,5 +17,6 @@ setup(
     license='MIT',
     entry_points={'console_scripts': [
         'genforce_encoder = unitac_representation.genforce_encoder_node:main',
+        'marker_segmentation = unitac_representation.marker_segmentation_node:main',
     ]},
 )
