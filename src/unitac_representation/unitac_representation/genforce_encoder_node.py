@@ -61,9 +61,12 @@ class GenForceVAE:
 
     def encode(self, marker_bgr):
         """Return flattened posterior mean (not sampled), float32 numpy array."""
-        if marker_bgr.ndim != 3 or marker_bgr.shape[2] != 3:
-            raise ValueError('Expected 3-channel BGR marker image')
-        rgb = cv2.cvtColor(marker_bgr, cv2.COLOR_BGR2RGB)
+        if marker_bgr.ndim == 2:
+            rgb = cv2.cvtColor(marker_bgr, cv2.COLOR_GRAY2RGB)
+        elif marker_bgr.ndim == 3 and marker_bgr.shape[2] == 3:
+            rgb = cv2.cvtColor(marker_bgr, cv2.COLOR_BGR2RGB)
+        else:
+            raise ValueError('Expected mono8 or 3-channel marker image')
         rgb = cv2.resize(rgb, (256, 256), interpolation=cv2.INTER_LINEAR)
         tensor = self.torch.from_numpy(
             np.ascontiguousarray(rgb.transpose(2, 0, 1))
@@ -116,7 +119,7 @@ class GenForceEncoderNode(Node):
         if self.count % self.every:
             return
         try:
-            image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+            image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='passthrough')
             embedding = self.encoder.encode(image)
             output = Float32MultiArray()
             output.data = embedding.tolist()
