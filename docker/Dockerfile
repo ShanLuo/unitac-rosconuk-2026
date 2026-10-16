@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1 \
     libglib2.0-0 \
     python3-pip \
+    python3-tk \
     python3-numpy \
     python3-opencv \
     python3-transforms3d \
