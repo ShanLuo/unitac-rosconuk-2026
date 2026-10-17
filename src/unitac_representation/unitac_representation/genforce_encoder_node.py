@@ -25,7 +25,7 @@ class GenForceVAE:
     def __init__(self, checkpoint_path, device='cpu'):
         import torch
         from diffusers import AutoencoderKL
-        from peft import LoraConfig
+        from peft import LoraConfig, inject_adapter_in_model
 
         self.torch = torch
         self.device = torch.device(device)
@@ -43,9 +43,13 @@ class GenForceVAE:
 
         rank = int(checkpoint.get('rank_vae', 4))
         targets = checkpoint.get('vae_lora_target_modules', self.TARGET_MODULES)
-        self.vae.add_adapter(
-            LoraConfig(r=rank, init_lora_weights='gaussian',
-                       target_modules=targets),
+        self.vae = inject_adapter_in_model(
+            LoraConfig(
+                r=rank,
+                init_lora_weights='gaussian',
+                target_modules=targets,
+            ),
+            self.vae,
             adapter_name='marker_encoder',
         )
         current = self.vae.state_dict()
