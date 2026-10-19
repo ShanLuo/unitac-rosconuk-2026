@@ -1,10 +1,10 @@
-# UniTac GenForce tactile representation (CPU-validated)
+# UniTac GenForce tactile representation (CPU and GPU validated)
 
 Read-only ROS 2 Humble pipeline: GelSight camera -> segmented marker image ->
 pretrained GenForce SD-Turbo VAE with marker-encoder LoRA -> 4,096-element
 `std_msgs/Float32MultiArray` on `/unitac/representation/embedding`.
 
-## Validation (17 October 2026)
+## CPU validation (17 October 2026)
 
 Validated in the existing `unitac-dev2` ROS 2 Humble Docker container with
 a GelSight camera and the genuine GenForce checkpoint:
@@ -16,13 +16,13 @@ a GelSight camera and the genuine GenForce checkpoint:
   **on CPU** with `process_every_n:=10` (observed on one machine, not a guarantee).
 - The encoder never commands the MG400 robot.
 
-**Not yet validated:** GPU performance, force estimation accuracy, transfer
-across sensors, or downstream closed-loop manipulation.
+**Not yet validated:** force estimation accuracy, transfer across sensors,
+or downstream closed-loop manipulation.
 
 ## Python dependencies
 
-The following versions were tested together **inside the active container**;
-they have not yet been integrated into the Docker image build:
+The following versions were tested together **inside the CPU container**;
+they have not yet been integrated into a reproducible Docker image build:
 
 ```text
 torch==2.2.2+cpu
@@ -39,6 +39,79 @@ Humble's existing OpenCV, NumPy and cv_bridge packages were retained.
 The SD-Turbo VAE (`stabilityai/sd-turbo`, subfolder `vae`) is downloaded
 from Hugging Face on first use, requiring internet access and sufficient disk
 space. Check upstream model and dataset terms before redistributing weights.
+
+## GPU validation (19 October 2026)
+
+Validated with an NVIDIA GeForce RTX 2070 Max-Q (8 GB) in a separate
+`unitac-gpu` ROS 2 Humble Docker container using NVIDIA Container Toolkit
+and `torch==2.2.2+cu121`. The original CPU-validated Docker snapshot was
+retained. The CUDA-enabled PyTorch wheel was installed manually in the GPU
+container; **the Dockerfile does not yet reproduce this setup**.
+
+Results from this machine:
+
+| Test | Result |
+| --- | --- |
+| Saved-image GPU inference (5 warm-ups, 20 timed encodes) | 55.51 ms/image; 18.01 Hz |
+| Live camera -> segmentation -> GPU encoder | approximately 14.5–14.6 Hz |
+| Live setting | `process_every_n:=2` |
+| Embedding | 4,096 finite float32 values |
+| Offline GPU peak memory reserved | 0.72 GB |
+
+The live measurement was taken from `ros2 topic hz` on
+`/unitac/representation/embedding`, with camera FPS requested at 30.
+A separate ROS 2 subscriber verified one 4,096-element live embedding
+with all finite values. These are observations, **not guaranteed rates**.
+The CPU live result (0.82 Hz) used different frame skipping
+(`process_every_n:=10`), so it is not a controlled speedup comparison.
+The GPU test has **not** yet been repeated with `process_every_n:=1`.
+No robot commands were issued.
+
+### Run with CUDA in the GPU-enabled container
+
+Prerequisites: working NVIDIA Container Toolkit GPU access; CUDA-enabled
+PyTorch 2.2.2+cu121 and the other dependencies listed above; ROS 2 Humble
+environment; installed UniTac workspace; separately downloaded checkpoint.
+Use one terminal per node, source the ROS 2 environment in each, and avoid
+opening the camera from more than one process.
+
+```bash
+source /opt/ros/humble/setup.bash
+source /ros2_ws/install/setup.bash
+ros2 run unitac_gelsight gelsight_node
+```
+
+In a second terminal:
+
+```bash
+source /opt/ros/humble/setup.bash
+source /ros2_ws/install/setup.bash
+ros2 run unitac_representation marker_segmentation
+```
+
+In a third terminal:
+
+```bash
+source /opt/ros/humble/setup.bash
+source /ros2_ws/install/setup.bash
+ros2 run unitac_representation genforce_encoder --ros-args \
+  -p checkpoint_path:=/ros2_ws/checkpoints/checkpoint.pth \
+  -p device:=cuda \
+  -p input_is_marker_image:=true \
+  -p input_topic:=/unitac/gelsight/marker_image \
+  -p process_every_n:=2
+```
+
+In another terminal, after sourcing both environments, measure the rate:
+
+```bash
+ros2 topic hz /unitac/representation/embedding
+```
+
+The `unitac-gpu` container was started with `--gpus all`, host networking,
+the GelSight `/dev/video2` device, and the workspace bind-mounted at
+`/ros2_ws`. The setup is machine-specific; do not assume that device paths,
+GPU driver versions, or installed Python packages will match other hosts.
 
 ## Checkpoint (download separately; do not commit weights)
 
@@ -107,9 +180,9 @@ No MG400 movement is needed.
 
 ## Next milestones
 
-1. Optional CUDA backend, profiling and throughput optimization.
-2. Quantitative evaluation of learned features for force estimation.
-3. A safe, opt-in manipulation demonstration using tactile feedback.
+1. Package the validated CUDA environment reproducibly and test `process_every_n:=1` / throughput optimisation.
+2. Quantitatively evaluate learned features for force estimation using synchronised ground truth.
+3. Develop a safe, opt-in manipulation demonstration using tactile feedback.
 
 The current node publishes **representations, not force predictions**. Do not
 interpret the features as calibrated force measurements or claim cross-sensor
