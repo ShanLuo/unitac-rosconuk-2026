@@ -3,11 +3,12 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
-    working_dir: /workspace
+    network_mode: host
+    working_dir: /ros2_ws
     stdin_open: true
     tty: true
-    environment:
-      - PYTHONPATH=/workspace/src
+    devices:
+      - "${GELSIGHT_DEVICE:-/dev/video2}:/dev/video2"
     volumes:
-      - .:/workspace
-      - ./tactile_data:/workspace/tactile_data
+      - ./src:/ros2_ws/src
+      - ./test_output:/ros2_ws/test_output

@@ -1,0 +1,31 @@
+/mg400_move_z_node:
+  ros__parameters:
+
+    # Dobot MG400 network connection
+    robot_ip: "192.168.1.6"
+
+    # Global robot speed (%)
+    speed: 10.0
+
+    # Calibrated work frame:
+    # [x_mm, y_mm, z_mm, rx_deg, ry_deg, rz_deg]
+    work_frame:
+      - 266.19491577
+      - 41.40279007
+      - -115.76152039
+      - 0.0
+      - 0.0
+      - 0.0
+
+    # Tool centre point:
+    # [x_mm, y_mm, z_mm, rx_deg, ry_deg, rz_deg]
+    tcp:
+      - 0.0
+      - 0.0
+      - -50.0
+      - 0.0
+      - 0.0
+      - 0.0
+
+    # Safety limit for the temporary relative-Z interface
+    max_z_step_mm: 2.0
