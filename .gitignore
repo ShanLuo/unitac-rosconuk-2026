@@ -13,3 +13,5 @@ tactile_data/
 *.bag
 *.db3
 *.mcap
+*.egg-info/
+.pixi/

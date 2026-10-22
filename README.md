@@ -61,6 +61,18 @@ GELSIGHT_DEVICE=/dev/video3 docker compose run --rm workshop
 
 The container uses host networking so it can communicate with the MG400 over Ethernet. Verify the robot IP and camera device before hardware bringup.
 
+### Without Docker (pixi)
+
+Alternatively, use [pixi](https://pixi.sh):
+
+```bash
+pixi install
+pixi run check-env
+pixi run build
+pixi shell
+source install/setup.bash
+```
+
 ## MG400 + GelSight workshop workflow
 
 Only one MG400 connection owner and one GelSight camera owner should be running.
