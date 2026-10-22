@@ -14,3 +14,16 @@ dependencies = {file = ["requirements.txt"]}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-arm64", "osx-64"]
+
+[tool.pixi.dependencies]
+python = ">=3.9,<3.13"
+
+[tool.pixi.pypi-dependencies]
+unitac-rosconuk-2026 = { path = ".", editable = true }
+
+[tool.pixi.tasks]
+check-env = "bash scripts/check_environment.sh"
