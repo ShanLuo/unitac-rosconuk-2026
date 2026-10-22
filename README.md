@@ -36,6 +36,13 @@ docker compose build
 docker compose run --rm workshop
 ```
 
+Alternatively, for local (non-ROS) work on the Python package, use [pixi](https://pixi.sh):
+
+```bash
+pixi install
+pixi run check-env
+```
+
 For the physical MG400 + GelSight demonstration, use the validated collector only after reading `docs/HARDWARE_SETUP.md`.
 
 ## Development status
