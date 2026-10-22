@@ -22,9 +22,22 @@ platforms = ["linux-64", "osx-arm64", "osx-64"]
 [tool.pixi.dependencies]
 python = ">=3.9,<3.13"
 ros-humble-ros-base = ">=0.10.0,<0.11"
+ros-humble-cv-bridge = ">=3.2.1,<4"
+ros-humble-image-transport = ">=3.1.12,<4"
+ros-humble-camera-info-manager = ">=3.1.12,<4"
+ros-humble-sensor-msgs = ">=4.9.1,<5"
+ros-humble-geometry-msgs = ">=4.9.1,<5"
+colcon-common-extensions = ">=0.3.0,<0.4"
+transforms3d = ">=0.4.2,<0.5"
+compilers = ">=2.0.0,<3"
+cmake = ">=4.2.3,<5"
+pkg-config = ">=0.29.2,<0.30"
+make = ">=4.4.1,<5"
+ninja = ">=1.13.2,<2"
 
 [tool.pixi.pypi-dependencies]
 unitac-rosconuk-2026 = { path = ".", editable = true }
 
 [tool.pixi.tasks]
 check-env = "bash scripts/check_environment.sh"
+build = "colcon build --symlink-install"

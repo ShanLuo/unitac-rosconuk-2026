@@ -68,6 +68,9 @@ Alternatively, use [pixi](https://pixi.sh):
 ```bash
 pixi install
 pixi run check-env
+pixi run build
+pixi shell
+source install/setup.bash
 ```
 
 ## MG400 + GelSight workshop workflow
