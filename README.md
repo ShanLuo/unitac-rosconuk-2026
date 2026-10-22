@@ -36,7 +36,7 @@ docker compose build
 docker compose run --rm workshop
 ```
 
-Alternatively, for local (non-ROS) work on the Python package, use [pixi](https://pixi.sh):
+Alternatively, use [pixi](https://pixi.sh):
 
 ```bash
 pixi install
