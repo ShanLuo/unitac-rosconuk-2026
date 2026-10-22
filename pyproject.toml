@@ -16,11 +16,12 @@ dependencies = {file = ["requirements.txt"]}
 where = ["src"]
 
 [tool.pixi.workspace]
-channels = ["conda-forge"]
+channels = ["conda-forge", "https://prefix.dev/robostack-humble"]
 platforms = ["linux-64", "osx-arm64", "osx-64"]
 
 [tool.pixi.dependencies]
 python = ">=3.9,<3.13"
+ros-humble-ros-base = ">=0.10.0,<0.11"
 
 [tool.pixi.pypi-dependencies]
 unitac-rosconuk-2026 = { path = ".", editable = true }
