@@ -37,6 +37,9 @@ ninja = ">=1.13.2,<2"
 
 [tool.pixi.pypi-dependencies]
 unitac-rosconuk-2026 = { path = ".", editable = true }
+# Same CRI revision as docker/Dockerfile; the 0.5.3 wheel on PyPI has a circular
+# import when cri.dobot.mg400_controller is imported directly.
+common-robot-interface = { git = "https://github.com/robot-dexterity/common-robot-interface.git", rev = "15301cf4132b0482b5e453e724f821ac93bb50b9" }
 
 [tool.pixi.tasks]
 check-env = "bash scripts/check_environment.sh"
